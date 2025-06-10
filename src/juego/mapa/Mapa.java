@@ -66,7 +66,7 @@ public class Mapa {
 
     public void mostrar() {
         for (int i = 0; i < filas; i++) {
-            for (int j = 0; i < columnas; j++) {
+            for (int j = 0; j < columnas; j++) {
                 Celda celda = celdas[i][j];
 
                 if (celda.getPersonaje() != null) {
@@ -79,6 +79,7 @@ public class Mapa {
                     System.out.print(". "); //celda vacia
                 }
             }
+            System.out.println(); //este print hace el salto de linea por fila
         }
     }
 }
