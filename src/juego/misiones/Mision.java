@@ -2,6 +2,6 @@
 package juego.misiones;
 
 
-public class Mision {
+public abstract class Mision {
     
 }

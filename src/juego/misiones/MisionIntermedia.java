@@ -2,6 +2,6 @@
 package juego.misiones;
 
 
-public class MisionIntermedia {
+public class MisionIntermedia extends Mision{
     
 }
