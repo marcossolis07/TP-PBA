@@ -7,7 +7,7 @@ import juego.mapa.Mapa;
 
 public class Guardia extends Personaje implements Enemigo{
     
-    private Random random = new Random();
+    private final Random random = new Random();
 
     public Guardia(String nombre, int vida, Posicion posicion) {
         super(nombre, vida, posicion);
@@ -43,6 +43,7 @@ public class Guardia extends Personaje implements Enemigo{
             case 3: y= 1;  break;     
         }    
         mapa.moverPersonaje(this, x, y);
+        
     }
     
 }
