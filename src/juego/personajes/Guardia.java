@@ -15,17 +15,21 @@ public class Guardia extends Personaje implements Enemigo{
 
     @Override
     public boolean detectar(Snake snake) {
-        return(snake.posicion.estaCerca(this.posicion,1));
-    }
+        return (snake.getPosicion().estaCerca(this.posicion, 1)); 
+        }
+        
 
     @Override
     public void atacar(Snake snake) {
-        System.out.println("¡Un Guardia te capturo! Mision fallida.");
+        if(this.detectar(snake) == true){
+        snake.setVida(0);
+        System.out.println("¡Un Guardia te capturo! Mision fallida.");    
+        }
     }
 
     @Override
     public void mover() {
-        
+        System.out.println("");
     }
     
     public void patrullar (Mapa mapa){
