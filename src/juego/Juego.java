@@ -63,6 +63,20 @@ public class Juego {
 }
 
     private void iniciarMision() {
+    Mision mision; 
+    boolean misionSuperada = false;
+    
+    switch (misionActual){
+        case 0: //misionHangar();
+            break;
+        case 1: //misionAlmacen();
+            break;
+        case 2: //misionBatallaFinal();
+            break;
+        default: System.out.println("¡Felicitaciones! Has completado todas las misiones");
+                
+           }
+           
     }
 
     private void guardarMision() {
