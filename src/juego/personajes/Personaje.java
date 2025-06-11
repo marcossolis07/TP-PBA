@@ -18,7 +18,7 @@ public abstract class Personaje {
     //metodo abstracto, cada personaje que implemente esta clase, tiene que implementar el metodo
     public abstract void mover();
 
-    //getters y setters
+    //getters
     public String getNombre() {
         return nombre;
     }
@@ -27,18 +27,24 @@ public abstract class Personaje {
         return vida;
     }
 
-    public void setVida(int vida) {
-        this.vida = vida;
-    }
-
     public Posicion getPosicion() {
         return posicion;
+    }
+
+    //setters
+    public void setVida(int vida) {
+        if (vida < 0) {
+            this.vida = 0;
+        } else {
+            this.vida = vida;
+        }
     }
 
     public void setPosicion(Posicion posicion) {
         this.posicion = posicion;
     }
 
+    //metodo para recibir daño
     public void recibirDanio(int danio) {
         //restamos el daño recibido a la vida que tenemos
         this.vida -= danio;
@@ -48,6 +54,7 @@ public abstract class Personaje {
         }
     }
 
+    //metodo para saber si el personaje esta muerto
     public boolean estaMuerto() {
         return this.vida <= 0;
     }
