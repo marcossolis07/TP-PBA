@@ -7,14 +7,14 @@ import java.util.Scanner;
 public class Juego {
     private Scanner sc = new Scanner(System.in);
     private Snake snake;
-    private int misionesCompletadas;
-    private int misionActual;
+    private int misionesCompletadas; //Atributo para saber que mision esta completa
+    private int misionActual; //Atributo para saber que mision iniciar
     private Mapa mapa;
     private int opcion = 0;
        
     public Juego(){
      
-    
+    misionActual = 0;
     misionesCompletadas = 0;
     snake = new Snake ("Snake",100, new Posicion (0,0));    
       
@@ -35,7 +35,7 @@ public class Juego {
                                   1. INICIAR MISION
                                   2. GUARDAR ESTADO
                                   3. CARGAR ESTADO
-                           
+                                 
                            """); 
     opcion = sc.nextInt();
     switch (opcion){
@@ -48,6 +48,7 @@ public class Juego {
         case 3:
             cargarMision();
             break;
+        
         default: System.out.println("Codigo incorrecto, ingrese nuevamente: ");
     }
     }
@@ -63,15 +64,32 @@ public class Juego {
 }
 
     private void iniciarMision() {
-    Mision mision; 
-    boolean misionSuperada = false;
-    
+        Mision mision;
+        boolean misionCompleta = false;
     switch (misionActual){
-        case 0: //misionHangar();
+        case 0: mision = new MisionIntermedia ("Hangar de entrada","Encontrar una tarjeta de acceso evitando a los guardias.",0);
+                mision.iniciar();
+                if(mision.misionCompletada){
+                    misionCompleta= true;
+                    misionesCompletadas++;
+                    misionActual++;
+                }
             break;
-        case 1: //misionAlmacen();
+        case 1: mision= new MisionIntermedia ("Almacén de Armas","Recoger explosivos C4.",1);
+                mision.iniciar();
+                if(mision.misionCompletada){
+                    misionCompleta= true;
+                    misionesCompletadas++;
+                    misionActual++;
+                }
             break;
-        case 2: //misionBatallaFinal();
+        case 2: mision = new MisionFinal ("","");
+                mision.iniciar();
+                if(mision.misionCompletada){
+                    misionCompleta= true;
+                    misionesCompletadas++;
+                    misionActual++;
+                }
             break;
         default: System.out.println("¡Felicitaciones! Has completado todas las misiones");
                 

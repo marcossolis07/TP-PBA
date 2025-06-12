@@ -1,6 +1,8 @@
 package juego.objetos;
+import juego.mapa.Celda;
+import juego.personajes.Personaje;
 
-public class Objeto {
+public class Objeto{
 
     private String tipo;
     private boolean recogido;
@@ -10,7 +12,8 @@ public class Objeto {
         this.tipo = tipo;
         this.recogido = false; //arranca el false, porque no fue recogido
     }
-
+ 
+    
     //getter del tipo, puede ser Tarjeta, C4, etc
     public String getTipo() {
         return tipo;

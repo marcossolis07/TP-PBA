@@ -1,8 +1,8 @@
 package juego.mapa;
-
+import juego.Juego;
 import juego.personajes.Personaje;
 
-public class Mapa {
+public class Mapa extends Juego{
 
     private int filas;
     private int columnas;
@@ -21,7 +21,6 @@ public class Mapa {
             }
         }
     }
-
     //devolvemos la celda en la posicion indicada
     public Celda getCelda(int x, int y) {
         if ((x >= 0 && x < filas) && (y >= 0 && y < columnas)) {

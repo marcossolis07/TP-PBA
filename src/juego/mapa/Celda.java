@@ -3,7 +3,7 @@ package juego.mapa;
 import juego.objetos.Objeto;
 import juego.personajes.Personaje;
 
-public class Celda {
+public class Celda{
 
     private Personaje personaje; // pueder ser Snake, Guardia o MetalGear
     private Objeto objeto; // puede ser Tarjeta, C4, etc
