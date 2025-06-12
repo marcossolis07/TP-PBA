@@ -20,25 +20,30 @@ public class MetalGear extends Personaje implements Enemigo {
     }
 
     @Override
-    public void atacar(Snake snake) {
+    public int atacar(Snake snake) {
+        int ataque; //atributo que va a contener el valor del ataque
         //elegimos aleatoriamente si usa laser o msil
         if (random.nextBoolean()) {
-            atacarLaser(snake);
+            ataque = atacarLaser(snake);
         } else {
-            atacarMisil(snake);
+            ataque = atacarMisil(snake);
         }
+        return ataque;
     }
 
-    public void atacarMisil(Snake snake) {
+    //devolvemos el daño, aparte de aplicarlo
+    public int atacarMisil(Snake snake) {
         int ataque = min + random.nextInt(max - min + 1);
         snake.recibirDanio(ataque);
         System.out.println("¡Metal Gear ataca con un Misil! (-" + ataque + " HP)\n");
+        return ataque;
     }
 
-    public void atacarLaser(Snake snake) {
+    public int atacarLaser(Snake snake) {
         int ataque = min + random.nextInt(max - min + 1);
         snake.recibirDanio(ataque);
         System.out.println("¡Metal Gear ataca con un Canion Laser! (-" + ataque + " HP)\n");
+        return ataque;
     }
 
     @Override

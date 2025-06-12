@@ -14,7 +14,6 @@ public class Guardia extends Personaje implements Enemigo {
     -si lo detecta, lo atrapa y se reinica la mision
     }
      */
-
     private final Random random = new Random(); //usamos para elegir direcciones al azar
     private Mapa mapa;
 
@@ -31,11 +30,12 @@ public class Guardia extends Personaje implements Enemigo {
     }
 
     @Override
-    public void atacar(Snake snake) {
+    public int atacar(Snake snake) {
         if (this.detectar(snake)) {
             snake.setVida(0); // lo mata
             System.out.println("¡Un Guardia te capturo! Mision fallida.");
         }
+        return this.getVida();
     }
 
     @Override
