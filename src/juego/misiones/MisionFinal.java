@@ -1,6 +1,8 @@
 
 package juego.misiones;
 
+import juego.personajes.Snake;
+
 
 public class MisionFinal extends Mision{
 
@@ -9,8 +11,9 @@ public class MisionFinal extends Mision{
     }
 
     @Override
-    public void iniciar() {
+    public boolean iniciar(Snake snake) {
         System.out.println("Mision Final......");
+        return false;
     }
     
 }

@@ -1,8 +1,8 @@
 
 package juego.misiones;
-import juego.Juego;
+import juego.personajes.Snake;
 
-public abstract class Mision extends Juego {
+public abstract class Mision{
     public boolean misionCompletada;
     public String nombre;
     public String descripcion;
@@ -13,8 +13,7 @@ public abstract class Mision extends Juego {
         this.misionCompletada = false;
     }
     
-    @Override
-    public abstract void iniciar();
+    public abstract boolean iniciar(Snake snake);
     
     
 }

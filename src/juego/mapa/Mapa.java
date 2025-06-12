@@ -1,12 +1,14 @@
 package juego.mapa;
-import juego.Juego;
-import juego.personajes.Personaje;
+import java.util.ArrayList;
+import java.util.List;
+import juego.personajes.*;
 
-public class Mapa extends Juego{
+public class Mapa{
 
     private int filas;
     private int columnas;
     private Celda[][] celdas;
+    private List<Guardia> guardias = new ArrayList<>();
 
     //constructor, se crea el mapa con las dimensiones dadas
     public Mapa(int filas, int columnas) {

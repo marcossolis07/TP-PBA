@@ -68,24 +68,21 @@ public class Juego {
         boolean misionCompleta = false;
     switch (misionActual){
         case 0: mision = new MisionIntermedia ("Hangar de entrada","Encontrar una tarjeta de acceso evitando a los guardias.",0);
-                mision.iniciar();
-                if(mision.misionCompletada){
+                if(mision.iniciar(snake)){
                     misionCompleta= true;
                     misionesCompletadas++;
                     misionActual++;
                 }
             break;
         case 1: mision= new MisionIntermedia ("Almacén de Armas","Recoger explosivos C4.",1);
-                mision.iniciar();
-                if(mision.misionCompletada){
+                if(mision.iniciar(snake)){
                     misionCompleta= true;
                     misionesCompletadas++;
                     misionActual++;
                 }
             break;
         case 2: mision = new MisionFinal ("","");
-                mision.iniciar();
-                if(mision.misionCompletada){
+                if(mision.iniciar(snake)){
                     misionCompleta= true;
                     misionesCompletadas++;
                     misionActual++;

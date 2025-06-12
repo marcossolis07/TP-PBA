@@ -11,16 +11,16 @@ public class MisionIntermedia extends Mision{
     }
     
     @Override
-    public void iniciar() {
+    public boolean iniciar(Snake snake) {
         switch (numMision){
             case 0: System.out.println("Mision 1"); 
                 
                 break;
             case 1: System.out.println("Mision 2"); 
                 break;
-                    
-        }
+        
         //System.out.println("Iniciando Mision: " + this.nombre + " " + this.descripcion);
     }
-
+        return false;
+} 
 }
