@@ -14,13 +14,25 @@ public class MisionIntermedia extends Mision{
     public boolean iniciar(Snake snake) {
         switch (numMision){
             case 0: System.out.println("Mision 1"); 
-                
-                break;
+                return hangar(snake);
             case 1: System.out.println("Mision 2"); 
-                break;
-        
-        //System.out.println("Iniciando Mision: " + this.nombre + " " + this.descripcion);
+                return almacen(snake);
     }
         return false;
 } 
+
+    private boolean hangar(Snake snake) {
+        
+        System.out.println("Iniciando Mision: " + this.nombre.toUpperCase() + " " + this.descripcion);
+        
+
+        return this.misionCompletada;
+
+    }
+    
+    private boolean almacen(Snake snake){
+        System.out.println("Iniciando Mision: " + this.nombre.toUpperCase() + " " + this.descripcion);
+        
+        return this.misionCompletada;
+    }
 }
