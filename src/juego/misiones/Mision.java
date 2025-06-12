@@ -12,6 +12,15 @@ public abstract class Mision{
         this.descripcion = descripcion;
         this.misionCompletada = false;
     }
+
+    public boolean isMisionCompletada() {
+        return misionCompletada;
+    }
+
+    public void setMisionCompletada(boolean misionCompletada) {
+        this.misionCompletada = misionCompletada;
+    }
+    
     
     public abstract boolean iniciar(Snake snake);
     

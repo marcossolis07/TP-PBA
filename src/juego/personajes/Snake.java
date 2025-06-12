@@ -1,6 +1,7 @@
 package juego.personajes;
 
 import java.util.Random;
+import juego.mapa.Mapa;
 import juego.mapa.Posicion;
 import juego.objetos.Objeto;
 

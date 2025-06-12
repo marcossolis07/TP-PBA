@@ -45,6 +45,6 @@ public class Celda{
 
     //metodo para saber si la celda esta vacia o no
     public boolean estaLibre() {
-        return personaje == null && !puertaBloqueada;
+        return objeto == null && personaje == null && !puertaBloqueada;
     }
 }
