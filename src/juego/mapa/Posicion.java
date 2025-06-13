@@ -27,10 +27,10 @@ public class Posicion {
     }
 
     public boolean estaCerca(Posicion otraPosicion, int distancia) {
-        int diferenciaX = Math.abs(this.x - otraPosicion.x); // diferencia en x
-        int diferenciaY = Math.abs(this.y - otraPosicion.y); // diferencia en y
+        int diferenciaX = Math.abs(this.x - otraPosicion.getX()); // diferencia en x
+        int diferenciaY = Math.abs(this.y - otraPosicion.getY()); // diferencia en y
 
-        return diferenciaX + diferenciaY <= distancia; //si la suma es menor o igual a distancia, es porque esta cerca
+        return (diferenciaX + diferenciaY) <= distancia; //si la suma es menor o igual a distancia, es porque esta cerca
     }
 
     @Override

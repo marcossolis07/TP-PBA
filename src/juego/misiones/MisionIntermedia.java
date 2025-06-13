@@ -103,21 +103,26 @@ public class MisionIntermedia extends Mision{
             startLoop = false;
         }
         
-        List<Guardia> guardias = mapa.getGuardias();
+       List<Guardia> guardias = mapa.getGuardias();
         if (!guardias.isEmpty()) {
             Guardia guardiaRandom = guardias.get(random.nextInt(guardias.size()));
             guardiaRandom.patrullar();
 
-            if (guardiaRandom.detectar(snake)) {
-                guardiaRandom.atacar(snake);
-                System.out.println("\n¡Te capturó un guardia! Perdiste y volvés a empezar.");
-                startLoop = false;
+            // Chequear detección de TODOS los guardias
+            for (Guardia guardia : guardias) {
+                if (guardia.detectar(snake)) {
+                    int vida = guardia.atacar(snake);
+                    if (vida == 0) {
+                        System.out.println("\n¡Te capturó un guardia! Perdiste y volvés a empezar.");
+                        startLoop = false;
+                        return false;
+                        
+                    }
+                }
             }
         
-
-    }}
-        return this.misionCompletada;
-    }
+        }}   return this.misionCompletada;
+        }
     private boolean almacen(Snake snake){
         System.out.println("Iniciando Mision: " + this.nombre.toUpperCase() + " " + this.descripcion);
         

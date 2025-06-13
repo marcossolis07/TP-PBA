@@ -70,9 +70,9 @@ public class Guardia extends Personaje implements Enemigo {
         //primero nos fijamos si existe el lugar y despues si esta libre
         if (mapa.getCelda(x, y) != null && mapa.getCelda(x, y).estaLibre()) {
             mapa.moverPersonaje(this, x, y);
-        } else {
+        } /*else {
             System.out.println(this.getNombre() + " no se pudo mover");
-        }
+        }*/
     }
 
 }
