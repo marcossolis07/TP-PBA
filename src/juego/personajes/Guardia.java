@@ -29,11 +29,16 @@ public class Guardia extends Personaje implements Enemigo {
         return this.posicion.estaCerca(snake.getPosicion(), 1);
     }
 
+    public boolean detectarC4(Snake snake) {
+        //este metodo devuelve true si snake esta a 1 celda de distancia
+        return this.posicion.estaCerca(snake.getPosicion(), 3);
+    }    
+    
     @Override
     public int atacar(Snake snake) {
         if (this.detectar(snake)) {
             snake.setVida(0); // lo mata
-            System.out.println("¡Un Guardia te capturo! Mision fallida.");
+            //System.out.println("¡Un Guardia te capturo! Mision fallida.");
         }
         return this.getVida();
     }

@@ -66,13 +66,15 @@ public class Juego {
     private void iniciarMision() {
         Mision mision;
         boolean misionCompleta = false;
-        switch (misionActual) {
+        while (misionActual < 2) {
+            switch(misionActual){
             case 0:
                 mision = new MisionIntermedia("Hangar de entrada", "Encontrar una tarjeta de acceso evitando a los guardias.", 0);
                 if (mision.iniciar(snake)) {
                     misionCompleta = true;
                     misionesCompletadas++;
                     misionActual++;
+                    System.out.println("Pasaste a la siguiente Mision \n");
                 }
                 break;
             case 1:
@@ -82,7 +84,7 @@ public class Juego {
                     misionesCompletadas++;
                     misionActual++;
                 }
-                break;
+                  break;
             case 2:
                 mision = new MisionFinal("", "");
                 if (mision.iniciar(snake)) {
@@ -95,7 +97,7 @@ public class Juego {
                 System.out.println("¡Felicitaciones! Has completado todas las misiones");
 
         }
-
+        }
     }
 
     private String guardarMision() {
@@ -130,36 +132,4 @@ public class Juego {
     }
 }
 
-/*
-// 1. Crear el mapa
-        Mapa mapa = new Mapa(5, 5);
 
-        // 2. Crear Snake en (2, 2)
-        Snake snake = new Snake("Snake", 100, new Posicion(2, 2));
-        mapa.colocarPersonaje(snake);
-
-        // 3. Crear Guardia en (2, 4)
-        Guardia guardia = new Guardia("Guardia", 100, new Posicion(2, 4), mapa);
-        mapa.colocarPersonaje(guardia);
-
-        // 4. Mostrar mapa inicial
-        System.out.println("Mapa INICIAL:");
-        mapa.mostrar();
-
-        while (snake.getVida() != 0) {
-            // 5. El guardia patrulla
-            System.out.println("\nGuardia patrullando...");
-            guardia.patrullar();
-
-            // 6. Después de patrullar, intentamos detectar y atacar a Snake
-            guardia.atacar(snake);
-
-            // 7. Mostrar mapa final
-            System.out.println("\nMapa FINAL:");
-            mapa.mostrar();
-
-        }
-
-        // 8. Mostrar vida de Snake
-        System.out.println("\nVida de Snake: " + snake.getVida());
- */

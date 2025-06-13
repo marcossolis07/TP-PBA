@@ -93,6 +93,6 @@ public class Mapa{
                 }
             }
             System.out.println(); //este print hace el salto de linea por fila
-        }
+        }   System.out.println();
     }
 }
