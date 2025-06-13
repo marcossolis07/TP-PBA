@@ -59,9 +59,6 @@ public class Juego {
 
     public static void main(String[] args) {
 
-        /*Mapa mapaMisionUno = new Mapa (7,7);   
-    Mapa mapaMisionDos = new Mapa (9,9);
-         */
         Juego juego = new Juego();
         juego.iniciar();
     }

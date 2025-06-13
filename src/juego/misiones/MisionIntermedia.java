@@ -1,5 +1,6 @@
 
 package juego.misiones;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 import juego.mapa.Celda;
@@ -22,15 +23,17 @@ public class MisionIntermedia extends Mision{
     public boolean iniciar(Snake snake) {
         switch (numMision){
             case 0: System.out.println("Mision 1"); 
-                return hangar(snake);
+                hangar(snake);
+                break;
             case 1: System.out.println("Mision 2"); 
-                return almacen(snake);
+                almacen(snake);
+                break;
     }
         return false;
 } 
 
     private boolean hangar(Snake snake) {
-        boolean startLoop = false;
+        boolean startLoop = true;
         int cantidadEnemigos = 4;
         int tamanioMapa = 7;
         Mapa mapa = new Mapa (tamanioMapa,tamanioMapa);
@@ -56,26 +59,33 @@ public class MisionIntermedia extends Mision{
             int y = snake.getPosicion().getY();
             switch(mover){
                 case "W":
-                        y = y+1;
-                        break;
-                case "A":
                         x = x-1;
                         break;
-                case "S":
+                case "A":
                         y = y-1;
                         break;
+                case "S":
+                        x = x+1;
+                        break;
                 case "D":
-                        x= x+1;
+                        y= y+1;
                         break;
                 default: 
                     System.out.println("Movimiento Invalido! Intente nuevamente.");
+                    continue;
             }
             if (x < 0 || y < 0 || x >= tamanioMapa || y >= tamanioMapa) {
             System.out.println("No podés salir del mapa.");
+            continue;
         }
-            Celda movSnake = mapa.getCelda(x,y);
+            Celda movSnake = mapa.getCelda(x, y);
+            if (movSnake == null) {
+                System.out.println("Movimiento inválido (fuera del mapa).");
+                continue;
+    }    
             if(movSnake.isPuertaBloqueda() && !(snake.siTieneTarjeta())){
                 System.out.println("La puerta se encuenta bloqueada, necesitas la tarjeta de acceso.");
+                continue;
         }
             mapa.moverPersonaje(snake, x, y);
             
@@ -85,15 +95,27 @@ public class MisionIntermedia extends Mision{
             obj.recoger(); // asigna true a fueRecogido
             movSnake.setObjeto(null); // Saca el objeto de la celda
             System.out.println("¡Obtuviste la tarjeta de acceso!");
+            
         }
         if (x == 3 && y == 6 && snake.siTieneTarjeta()){
             System.out.println("Mision Completada, entraste al Hangar");
             this.setMisionCompletada(true);
+            startLoop = false;
         }
         
+        List<Guardia> guardias = mapa.getGuardias();
+        if (!guardias.isEmpty()) {
+            Guardia guardiaRandom = guardias.get(random.nextInt(guardias.size()));
+            guardiaRandom.patrullar();
+
+            if (guardiaRandom.detectar(snake)) {
+                guardiaRandom.atacar(snake);
+                System.out.println("\n¡Te capturó un guardia! Perdiste y volvés a empezar.");
+                startLoop = false;
+            }
         
 
-    }
+    }}
         return this.misionCompletada;
     }
     private boolean almacen(Snake snake){

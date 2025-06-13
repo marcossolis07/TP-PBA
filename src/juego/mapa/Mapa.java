@@ -43,8 +43,16 @@ public class Mapa{
         if (celda != null && celda.estaLibre()) {
             celda.setPersonaje(nuevoPersonaje);
         }
+        if (nuevoPersonaje instanceof Guardia guardia) {
+                if (!guardias.contains(guardia)) {
+                    guardias.add(guardia);
     }
-
+        }}
+    
+    public List<Guardia> getGuardias() {
+        return guardias;
+    }
+    
     //movemos un personaje de una celda a otra
     public void moverPersonaje(Personaje personaje, int nuevoX, int nuevoY) {
         //obtenemos la posicion actual del personaje
@@ -59,10 +67,10 @@ public class Mapa{
             origen.setPersonaje(null); //sacamos el personaje de la celda actual
             destino.setPersonaje(personaje); //ponemos el personaje en la nueva celda
             personaje.setPosicion(new Posicion(nuevoX, nuevoY)); //actualizamos la posicion
-        } else {
+        } /*else {
             System.out.println("Movimiento invalido: celda ocupada o fuera del mapa");
         }
-
+*/
     }
 
     public void mostrar() {
@@ -70,9 +78,13 @@ public class Mapa{
             for (int j = 0; j < columnas; j++) {
                 Celda celda = celdas[i][j];
 
-                if (celda.getPersonaje() != null) {
-                    System.out.print("P "); //personaje presente
-                } else if (celda.getObjeto() != null) {
+                if (celda.getPersonaje() instanceof Snake) {
+                    System.out.print("S "); //snake presente
+                } 
+                else if (celda.getPersonaje()instanceof Guardia){
+                    System.out.print("G "); //Guardias presentes
+                }
+                else if (celda.getObjeto() != null) {
                     System.out.print("O "); //objeto presente
                 } else if (celda.isPuertaBloqueda()) {
                     System.out.print("X "); //puerta cerrada
