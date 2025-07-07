@@ -8,13 +8,15 @@ public class Mapa{
     private int filas;
     private int columnas;
     private Celda[][] celdas;
-    private List<Guardia> guardias = new ArrayList<>();
+    private Guardia[] guardias;
+    private int cantidadGuardias = 0;
 
     //constructor, se crea el mapa con las dimensiones dadas
-    public Mapa(int filas, int columnas) {
+    public Mapa(int filas, int columnas, int maxGuardias) {
         this.filas = filas;
         this.columnas = columnas;
         this.celdas = new Celda[filas][columnas];
+        this.guardias = new Guardia[maxGuardias];
 
         //llenamos cada celda con una instancia vacia
         for (int i = 0; i < filas; i++) {
@@ -43,14 +45,22 @@ public class Mapa{
         if (celda != null && celda.estaLibre()) {
             celda.setPersonaje(nuevoPersonaje);
         }
-        if (nuevoPersonaje instanceof Guardia guardia) {
-                if (!guardias.contains(guardia)) {
-                    guardias.add(guardia);
+        if (nuevoPersonaje instanceof Guardia) {
+            Guardia guardia = (Guardia) nuevoPersonaje;
+                if (cantidadGuardias < guardias.length) {
+                    guardias[cantidadGuardias++] = guardia;
     }
         }}
     
-    public List<Guardia> getGuardias() {
-        return guardias;
+    public Guardia getGuardia(int i) {
+        if ( i >= 0 && i < cantidadGuardias){
+            return guardias[i];
+        }
+        return null;
+    }
+
+    public int getCantidadGuardias(){
+        return cantidadGuardias;
     }
     
     //movemos un personaje de una celda a otra

@@ -28,7 +28,7 @@ public class Juego {
                           -------------------------------------
                                 BIENVENIDOS A METAL GEAR
                           -------------------------------------
-                           """);
+                          """);
         boolean startLoop = true;
         while (startLoop) {
             System.out.println("""
@@ -37,7 +37,6 @@ public class Juego {
                                   1. INICIAR MISION
                                   2. GUARDAR ESTADO
                                   3. CARGAR ESTADO
-                                 
                            """);
             opcion = sc.nextInt();
             switch (opcion) {
@@ -64,39 +63,47 @@ public class Juego {
     }
 
     private void iniciarMision() {
-        Mision mision;
-        boolean misionCompleta = false;
-        while (misionActual < 2) {
-            switch(misionActual){
+        Mision mision = null;
+
+        switch (misionActual) {
             case 0:
                 mision = new MisionIntermedia("Hangar de entrada", "Encontrar una tarjeta de acceso evitando a los guardias.", 0);
-                if (mision.iniciar(snake)) {
+                /*if (mision.iniciar(snake)) {
                     misionCompleta = true;
                     misionesCompletadas++;
                     misionActual++;
                     System.out.println("Pasaste a la siguiente Mision \n");
-                }
+                }*/
                 break;
             case 1:
                 mision = new MisionIntermedia("Almacén de Armas", "Recoger explosivos C4.", 1);
-                if (mision.iniciar(snake)) {
+                /*if (mision.iniciar(snake)) {
                     misionCompleta = true;
                     misionesCompletadas++;
                     misionActual++;
-                }
-                  break;
+                }*/
+                break;
             case 2:
-                mision = new MisionFinal("", "");
-                if (mision.iniciar(snake)) {
+                mision = new MisionFinal("Metal Gear", "Destruye a Metal Gear y completa la misión final");
+                /*if (mision.iniciar(snake)) {
                     misionCompleta = true;
                     misionesCompletadas++;
                     misionActual++;
-                }
+                }*/
                 break;
             default:
                 System.out.println("¡Felicitaciones! Has completado todas las misiones");
+                return;
 
         }
+        // }
+
+        if (mision.iniciar(snake)) {
+            misionesCompletadas++;
+            misionActual++;
+            System.out.println("Misión completada. Pasaste a la siguiente misión.\n");
+        } else {
+            System.out.println("Misión fallida. Inténtalo nuevamente.\n");
         }
     }
 
@@ -131,5 +138,3 @@ public class Juego {
         }
     }
 }
-
-
